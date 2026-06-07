@@ -1,8 +1,8 @@
 import {
   Component,
   OnDestroy,
-  OnInit,
   computed,
+  effect,
   inject,
   input,
   signal,
@@ -43,7 +43,7 @@ interface TesPoint {
     }
   `,
 })
-export class TesTemperatureComponent implements OnInit, OnDestroy {
+export class TesTemperatureComponent implements OnDestroy {
   private socketSvc = inject(SocketService);
 
   Highcharts: typeof Highcharts = Highcharts;
@@ -61,67 +61,87 @@ export class TesTemperatureComponent implements OnInit, OnDestroy {
   private skipNextLive = false;
   private historyLoaded = false;
 
-  ngOnInit(): void {
-    // 3) WebSocket (Simulation & Live) with skip-first-live fix
-    const socket = this.socketSvc.connect();
-    this.socket = socket;
+  constructor() {
+    /** Mode-reactive: (re)wire socket whenever currentMode changes. */
+    effect(() => {
+      const mode = this.currentMode();
 
-    socket.on('connect', () => {
-      // On each (re)connect, skip the next live tick.
+      // Always tear down any prior socket before re-evaluating.
+      this.teardownSocket();
+
+      // reset guards for the new connection
       this.skipNextLive = true;
-      // Only use historyLoaded gate in Simulation; for Live we rely on Redux.
-      this.historyLoaded = this.currentMode() !== 'Simulation' ? true : false;
-    });
+      this.historyLoaded = false;
 
-    socket.on('sensorHistoricalData', (data: any) => {
-      if (this.currentMode() === 'Simulation' && data?.data?.length) {
-        const formatted: TesPoint[] = data?.data?.map((d: any) => ({
-          timestamp: d?.timestamp,
-          t2: parseFloat(d?.t2 || 0),
-        }));
-        this.chartData.set(formatted?.slice(-15));
-        this.historyLoaded = true;
-      }
-    });
+      // 3) WebSocket (Simulation & Live) with skip-first-live fix
+      const socket = this.socketSvc.connect();
+      this.socket = socket;
 
-    socket.on('sensorData', (data: any) => {
-      // 1) hard-skip the first live message after connect
-      if (this.skipNextLive) {
-        this.skipNextLive = false;
-        return;
-      }
-      // 2) ignore live ticks until history is set in Simulation mode
-      if (!this.historyLoaded) return;
-
-      const newPoint: TesPoint = {
-        timestamp: data?.timestamp,
-        t2: parseFloat(data?.t2 || 0),
-      };
-
-      this.chartData.update((prev) => {
-        const newTs = new Date(newPoint.timestamp).getTime();
-        const lastTs = prev.length
-          ? new Date(prev[prev.length - 1].timestamp).getTime()
-          : -Infinity;
-
-        // ignore duplicates/out-of-order
-        if (newTs <= lastTs) return prev;
-
-        const updated = [...prev, newPoint];
-        return updated.slice(-15);
+      socket.on('connect', () => {
+        // On each (re)connect, skip the next live tick.
+        this.skipNextLive = true;
+        // In Live mode, open the gate immediately (we rely on Redux history).
+        // In Simulation, do NOT reset to false on reconnect — it latches true
+        // once sensorHistoricalData arrives (else a flaky reconnect gates out
+        // all live ticks since history isn't re-sent).
+        if (mode !== 'Simulation') this.historyLoaded = true;
       });
-    });
 
-    if (this.currentMode() === 'Simulation') {
-      socket.emit('getSensorHistory', { type: 'sensorHistoricalData' });
-    }
+      socket.on('sensorHistoricalData', (data: any) => {
+        if (mode === 'Simulation' && data?.data?.length) {
+          const formatted: TesPoint[] = data?.data?.map((d: any) => ({
+            timestamp: d?.timestamp,
+            t2: parseFloat(d?.t2 || 0),
+          }));
+          this.chartData.set(formatted?.slice(-15));
+          this.historyLoaded = true;
+        }
+      });
+
+      socket.on('sensorData', (data: any) => {
+        // 1) hard-skip the first live message after connect
+        if (this.skipNextLive) {
+          this.skipNextLive = false;
+          return;
+        }
+        // 2) ignore live ticks until history is set in Simulation mode
+        if (!this.historyLoaded) return;
+
+        const newPoint: TesPoint = {
+          timestamp: data?.timestamp,
+          t2: parseFloat(data?.t2 || 0),
+        };
+
+        this.chartData.update((prev) => {
+          const newTs = new Date(newPoint.timestamp).getTime();
+          const lastTs = prev.length
+            ? new Date(prev[prev.length - 1].timestamp).getTime()
+            : -Infinity;
+
+          // ignore duplicates/out-of-order
+          if (newTs <= lastTs) return prev;
+
+          const updated = [...prev, newPoint];
+          return updated.slice(-15);
+        });
+      });
+
+      if (mode === 'Simulation') {
+        socket.emit('getSensorHistory', { type: 'sensorHistoricalData' });
+      }
+    });
   }
 
   ngOnDestroy(): void {
+    this.teardownSocket();
+  }
+
+  private teardownSocket(): void {
     if (this.socket) {
       this.socket.off('sensorData');
       this.socket.off('sensorHistoricalData');
       this.socket.disconnect();
+      this.socket = null;
     }
   }
 

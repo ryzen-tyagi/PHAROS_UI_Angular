@@ -152,3 +152,17 @@ app-full-screen-kpi, app-system-flow, app-kpis-forecasts, app-control-command-pa
 app-alarms-events, app-diagnostics-asset-health, app-date-time-picker {
   display: block;
 }
+
+/* The speedometer gauge uses relative sizing (width:100% height:70%), so its
+   host must fill the carousel slot — otherwise the inline host collapses and
+   Highcharts renders at its default ~600px width (only 1 gauge visible).
+   NOTE: do NOT force height on the D3 components (app-lps/app-sfg/app-tes...) —
+   their SVGs manage their own viewBox and break if stretched. */
+app-speedometer-gauge {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+highcharts-chart {
+  display: block;
+}
