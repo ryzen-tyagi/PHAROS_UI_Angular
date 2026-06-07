@@ -1,0 +1,91 @@
+<div
+  class="flex flex-col min-h-screen w-full"
+  style="background: linear-gradient(118.43deg, #000000 3.27%, #000000 37.38%, #0076A1 102.64%);"
+>
+  <!-- Main Content -->
+  <div class="flex justify-between items-center flex-grow">
+    <!-- Left Section -->
+    <div
+      class="w-full md:w-[50vw] gap-4 md:gap-6 flex justify-center items-center flex-col p-4 sm:p-6 md:p-8 lg:p-12 text-white"
+    >
+      <div class="flex justify-center">
+        <img src="/icons/loginIcon.png" alt="Logo" class="w-[18vw] h-[14vh] object-contain" />
+      </div>
+
+      <div class="text-center text-white">
+        <h1 class="font-bold text-[2.5rem] mb-2 leading-snug">
+          Data Center Waste Heat Reuse <br />
+          (WHR) Management Solution
+        </h1>
+        <h2 class="text-lg md:text-xl mt-6 font-semibold tracking-wider">
+          LOGIN TO YOUR ACCOUNT
+        </h2>
+      </div>
+
+      <form class="flex flex-col gap-5 w-[80%] md:w-[30vw] lg:w-[30vw]" (submit)="handleLogin($event)">
+        <!-- Email -->
+        <div class="relative w-full h-[5.6vh]">
+          <lucide-icon
+            [img]="Mail"
+            class="absolute top-1/2 left-2.5 -translate-y-1/2 text-[#CCCCCC] h-4 w-4"
+          ></lucide-icon>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            [(ngModel)]="email"
+            name="email"
+            class="w-full h-full pl-10 pr-4 rounded-[6px] border border-[#A7A7A7] bg-transparent text-white placeholder-[#CCCCCC] focus:outline-none focus:ring-2 focus:ring-[#00A6E2]"
+          />
+        </div>
+
+        <!-- Password -->
+        <div class="relative w-full h-[5.6vh]">
+          <lucide-icon
+            [img]="Lock"
+            class="absolute top-1/2 left-2.5 -translate-y-1/2 text-[#CCCCCC] h-4 w-4"
+          ></lucide-icon>
+          <input
+            [type]="showPassword() ? 'text' : 'password'"
+            placeholder="Enter your password"
+            [(ngModel)]="password"
+            name="password"
+            class="w-full h-full pl-10 pr-10 rounded-[6px] border border-[#A7A7A7] bg-transparent text-white placeholder-[#CCCCCC] focus:outline-none focus:ring-2 focus:ring-[#00A6E2]"
+          />
+          <button
+            type="button"
+            (click)="togglePassword()"
+            class="absolute top-1/2 right-2.5 -translate-y-1/2 text-gray-400 focus:outline-none"
+          >
+            <lucide-icon [img]="showPassword() ? EyeOff : Eye" class="h-4 w-4"></lucide-icon>
+          </button>
+        </div>
+
+        <!-- Login Button -->
+        <button
+          type="submit"
+          [disabled]="loading()"
+          class="w-full h-[5.6vh] rounded-[6px] text-white font-semibold transition-all duration-200"
+          [class]="loading() ? 'bg-gray-500 cursor-not-allowed' : 'bg-[#00A6E2] hover:bg-[#0092c9]'"
+        >
+          {{ loading() ? 'Logging in...' : 'LOGIN' }}
+        </button>
+      </form>
+    </div>
+
+    <!-- Right Section -->
+    <div class="hidden lg:block w-[50%] h-full p-6 pt-5">
+      <img
+        src="/images/LoginImage.jpg"
+        alt="Data Center"
+        class="w-full h-[90vh] md:h-[80vh] lg:h-[90vh] object-cover rounded-lg"
+      />
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="flex items-center justify-center h-full mb-2">
+    <div class="text-white text-sm bg-[#353535] rounded-xl w-fit px-2">
+      © Hitachi, Ltd. 2025. All rights reserved
+    </div>
+  </div>
+</div>

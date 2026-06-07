@@ -1,0 +1,48 @@
+<div
+  class="min-h-screen w-full flex flex-col justify-between items-center bg-cover bg-center bg-no-repeat relative"
+  style="background-image: url('/images/LandingPageBgImage.png');"
+>
+  <div class="rounded-e-lg absolute z-30 h-[88vh] bg-[#181818] top-[3.2rem] left-0">
+    <app-global-layout></app-global-layout>
+  </div>
+
+  <app-header title="PHAROS"></app-header>
+
+  <div class="flex justify-between w-full">
+    <div class="w-[3%] p-2 cursor-pointer text-white">
+      <lucide-icon
+        [img]="PanelRight"
+        class="text-white cursor-pointer h-6 w-6"
+        (click)="sidebar.toggle()"
+      ></lucide-icon>
+    </div>
+    <span class="bg-white border w-[1px] h-[87vh]"></span>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-auto mx-auto p-4">
+      @for (card of cards; track card.title) {
+        <div
+          class="relative w-[27vw] h-[40vh] rounded-[30px] p-[1px] bg-gradient-to-r from-[#10BDFC]/50 via-[#737373] to-[#017AA6]/50 hover:cursor-pointer"
+          (click)="handleCardClick(card)"
+        >
+          <div
+            class="bg-[#181818] rounded-[30px] p-6 flex flex-col justify-between items-center text-center h-full transition-all duration-300 ease-in-out hover:shadow-[0_0_15px_rgba(45,150,255,0.7)]"
+          >
+            <img
+              [src]="card.icon"
+              [alt]="card.title"
+              [style.width.vw]="card.width"
+              [style.height.vh]="card.height"
+              class="mb-[0.2vw] mt-[0.5vw]"
+            />
+            <div class="text-white font-semibold text-2xl mb-[1vw]">{{ card.title }}</div>
+            <div class="text-white text-base px-4">{{ card.description }}</div>
+            <div class="mt-5">
+              <lucide-icon [img]="CircleArrowRight" class="text-[#00A6E2] w-7 h-7"></lucide-icon>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>
