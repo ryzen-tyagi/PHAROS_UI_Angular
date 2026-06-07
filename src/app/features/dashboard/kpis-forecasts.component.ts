@@ -1,5 +1,5 @@
 import { Component, inject, signal, input, computed, OnDestroy, effect } from '@angular/core';
-import { LucideAngularModule, ArrowLeftCircle, ArrowRightCircle } from 'lucide-angular';
+import { LucideAngularModule, ChevronLeft, ChevronRight } from 'lucide-angular';
 import { Socket } from 'socket.io-client';
 import { SocketService } from '../../core/socket.service';
 import { SpeedometerGaugeComponent } from '../kpi/speedometer-gauge.component';
@@ -34,9 +34,11 @@ interface GaugeItem {
           <!-- Prev -->
           <button
             (click)="prev()"
-            class="cursor-pointer transition-all duration-300 ease-in-out bg-[#fff] border border-[#00A6E2] hover:bg-[#00A6E2] hover:scale-110 hover:shadow-lg active:scale-95 rounded-full ml-2 w-8 h-8 flex items-center justify-center shrink-0"
+            [disabled]="startIndex() === 0"
+            aria-label="Previous"
+            class="group shrink-0 ml-2 grid place-items-center w-9 h-9 rounded-full bg-white/95 text-[#00A6E2] border border-[#00A6E2] shadow-sm transition-all duration-300 ease-in-out hover:bg-[#00A6E2] hover:text-white hover:scale-110 hover:shadow-lg active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white/95 disabled:hover:text-[#00A6E2] disabled:hover:scale-100 disabled:hover:shadow-sm"
           >
-            <lucide-icon [img]="ArrowLeftCircle" [size]="18"></lucide-icon>
+            <lucide-icon [img]="ChevronLeft" [size]="20" [strokeWidth]="2.75" class="-ml-px"></lucide-icon>
           </button>
 
           <!-- Viewport -->
@@ -76,9 +78,11 @@ interface GaugeItem {
           <!-- Next -->
           <button
             (click)="next()"
-            class="cursor-pointer transition-all duration-300 ease-in-out bg-[#fff] border border-[#00A6E2] hover:bg-[#00A6E2] hover:scale-110 hover:shadow-lg active:scale-95 rounded-full mr-2 w-8 h-8 flex items-center justify-center shrink-0"
+            [disabled]="startIndex() >= maxStart()"
+            aria-label="Next"
+            class="group shrink-0 mr-2 grid place-items-center w-9 h-9 rounded-full bg-white/95 text-[#00A6E2] border border-[#00A6E2] shadow-sm transition-all duration-300 ease-in-out hover:bg-[#00A6E2] hover:text-white hover:scale-110 hover:shadow-lg active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white/95 disabled:hover:text-[#00A6E2] disabled:hover:scale-100 disabled:hover:shadow-sm"
           >
-            <lucide-icon [img]="ArrowRightCircle" [size]="18"></lucide-icon>
+            <lucide-icon [img]="ChevronRight" [size]="20" [strokeWidth]="2.75" class="-mr-px"></lucide-icon>
           </button>
         </div>
       </div>
@@ -92,8 +96,8 @@ export class KpisForecastsComponent implements OnDestroy {
   private socketSvc = inject(SocketService);
   private socket?: Socket;
 
-  protected readonly ArrowLeftCircle = ArrowLeftCircle;
-  protected readonly ArrowRightCircle = ArrowRightCircle;
+  protected readonly ChevronLeft = ChevronLeft;
+  protected readonly ChevronRight = ChevronRight;
 
   hrfValue = signal(0);
   pprValue = signal<number | string>(0);
@@ -101,6 +105,7 @@ export class KpisForecastsComponent implements OnDestroy {
 
   // carousel start index (3 visible, max start = length - 3)
   startIndex = signal(0);
+  maxStart = computed(() => Math.max(0, this.items().length - 3));
 
   items = computed<GaugeItem[]>(() => [
     {

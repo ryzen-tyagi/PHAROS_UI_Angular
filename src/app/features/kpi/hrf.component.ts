@@ -1,7 +1,6 @@
 import {
   Component,
   OnDestroy,
-  OnInit,
   computed,
   effect,
   inject,
@@ -47,7 +46,7 @@ interface HrfPoint {
     }
   `,
 })
-export class HrfComponent implements OnInit, OnDestroy {
+export class HrfComponent implements OnDestroy {
   private socketSvc = inject(SocketService);
   private kpi = inject(KpiService);
 
@@ -90,80 +89,95 @@ export class HrfComponent implements OnInit, OnDestroy {
         this.chartData.set(formatted.slice(-15));
       }
     });
-  }
 
-  ngOnInit(): void {
-    /** 1) Load Historical Data for Live Mode */
-    if (this.currentMode() !== 'Simulation') {
-      const to = new Date();
-      const from = new Date(to.getTime() - 24 * 60 * 60 * 1000);
-      this.kpi.fetchHrfHistory({
-        limit: 500,
-        fromDate: from.toISOString(),
-        toDate: to.toISOString(),
-      });
-    }
+    /** Mode-reactive: (re)wire socket / live fetch whenever currentMode changes. */
+    effect(() => {
+      const mode = this.currentMode();
 
-    /** 3) Simulation Mode: Historical + Streaming */
-    if (this.currentMode() !== 'Simulation') return;
+      // Always tear down any prior socket before re-evaluating.
+      this.teardownSocket();
 
-    const socket = this.socketSvc.connect();
-    this.socket = socket;
-
-    socket.on('connect', () => {
-      this.skipNextLive = true;
-      this.historyLoaded = false;
-    });
-
-    socket.on('hrfHistoricalData', (data: any) => {
-      if (data?.data?.length) {
-        const formatted: HrfPoint[] = data.data.map((d: any) => ({
-          it_power: parseFloat(d.it_power || 0),
-          recovered_waste_heat: parseFloat(d.recovered_waste_heat || 0),
-          HRF: parseFloat(d.HRF || 0),
-          timestamp: d.timestamp,
-        }));
-        this.chartData.set(formatted.slice(-15));
-        this.historyLoaded = true;
-      }
-    });
-
-    socket.on('hrfData', (data: any) => {
-      // 1) hard-skip the very first live message after connect
-      if (this.skipNextLive) {
-        this.skipNextLive = false;
+      /** 1) Load Historical Data for Live Mode */
+      if (mode !== 'Simulation') {
+        const to = new Date();
+        const from = new Date(to.getTime() - 24 * 60 * 60 * 1000);
+        this.kpi.fetchHrfHistory({
+          limit: 500,
+          fromDate: from.toISOString(),
+          toDate: to.toISOString(),
+        });
         return;
       }
-      // 2) ignore live ticks until history is set
-      if (!this.historyLoaded) return;
 
-      const newPoint: HrfPoint = {
-        it_power: parseFloat(data?.it_power || 0),
-        recovered_waste_heat: parseFloat(data?.recovered_waste_heat || 0),
-        HRF: parseFloat(data?.HRF || 0),
-        timestamp: data?.timestamp_pst || data?.timestamp || Date.now(),
-      };
+      /** 3) Simulation Mode: Historical + Streaming */
+      this.skipNextLive = true;
+      this.historyLoaded = false;
 
-      this.chartData.update((prev) => {
-        const newTs = new Date(newPoint.timestamp).getTime();
-        const lastTs = prev.length
-          ? new Date(prev[prev.length - 1].timestamp).getTime()
-          : -Infinity;
-        // ignore dup/out-of-order
-        if (newTs <= lastTs) return prev;
-        const updated = [...prev, newPoint];
-        return updated.slice(-15);
+      const socket = this.socketSvc.connect();
+      this.socket = socket;
+
+      socket.on('connect', () => {
+        // skip the first live tick after each (re)connect, but do NOT reset
+        // historyLoaded — on a flaky reconnect the server may not re-send
+        // history, and resetting it would gate out all live ticks forever.
+        this.skipNextLive = true;
       });
-    });
 
-    socket.emit('getSensorHistory', { type: 'hrfHistoricalData' });
+      socket.on('hrfHistoricalData', (data: any) => {
+        if (data?.data?.length) {
+          const formatted: HrfPoint[] = data.data.map((d: any) => ({
+            it_power: parseFloat(d.it_power || 0),
+            recovered_waste_heat: parseFloat(d.recovered_waste_heat || 0),
+            HRF: parseFloat(d.HRF || 0),
+            timestamp: d.timestamp,
+          }));
+          this.chartData.set(formatted.slice(-15));
+          this.historyLoaded = true;
+        }
+      });
+
+      socket.on('hrfData', (data: any) => {
+        // 1) hard-skip the very first live message after connect
+        if (this.skipNextLive) {
+          this.skipNextLive = false;
+          return;
+        }
+        // 2) ignore live ticks until history is set
+        if (!this.historyLoaded) return;
+
+        const newPoint: HrfPoint = {
+          it_power: parseFloat(data?.it_power || 0),
+          recovered_waste_heat: parseFloat(data?.recovered_waste_heat || 0),
+          HRF: parseFloat(data?.HRF || 0),
+          timestamp: data?.timestamp_pst || data?.timestamp || Date.now(),
+        };
+
+        this.chartData.update((prev) => {
+          const newTs = new Date(newPoint.timestamp).getTime();
+          const lastTs = prev.length
+            ? new Date(prev[prev.length - 1].timestamp).getTime()
+            : -Infinity;
+          // ignore dup/out-of-order
+          if (newTs <= lastTs) return prev;
+          const updated = [...prev, newPoint];
+          return updated.slice(-15);
+        });
+      });
+
+      socket.emit('getSensorHistory', { type: 'hrfHistoricalData' });
+    });
   }
 
   ngOnDestroy(): void {
+    this.teardownSocket();
+  }
+
+  private teardownSocket(): void {
     if (this.socket) {
       this.socket.off('hrfData');
       this.socket.off('hrfHistoricalData');
       this.socket.disconnect();
+      this.socket = null;
     }
   }
 

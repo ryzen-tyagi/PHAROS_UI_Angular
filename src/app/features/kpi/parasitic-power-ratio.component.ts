@@ -1,7 +1,6 @@
 import {
   Component,
   OnDestroy,
-  OnInit,
   computed,
   effect,
   inject,
@@ -47,7 +46,7 @@ interface PprPoint {
     }
   `,
 })
-export class ParasiticPowerRatioComponent implements OnInit, OnDestroy {
+export class ParasiticPowerRatioComponent implements OnDestroy {
   private socketSvc = inject(SocketService);
   private kpi = inject(KpiService);
 
@@ -84,84 +83,98 @@ export class ParasiticPowerRatioComponent implements OnInit, OnDestroy {
         this.chartData.set(formatted.slice(-15));
       }
     });
-  }
 
-  ngOnInit(): void {
-    /** 1) Fetch Live Historical Data */
-    if (this.currentMode() !== 'Simulation') {
-      const to = new Date();
-      const from = new Date(to.getTime() - 24 * 60 * 60 * 1000);
-      this.kpi.fetchPprHistory({
-        limit: 500,
-        fromDate: from.toISOString(),
-        toDate: to.toISOString(),
-      });
-    }
+    /** Mode-reactive: (re)wire socket / live fetch whenever currentMode changes. */
+    effect(() => {
+      const mode = this.currentMode();
 
-    /** 3) Simulation Mode — historical + live */
-    if (this.currentMode() !== 'Simulation') return;
+      // Always tear down any prior socket before re-evaluating.
+      this.teardownSocket();
 
-    const socket = this.socketSvc.connect();
-    this.socket = socket;
-
-    socket.on('connect', () => {
-      // on each (re)connect, we will ignore the first live tick
-      this.skipNextLive = true;
-      this.historyLoaded = false;
-    });
-
-    socket.on('pprHistoricalData', (data: any) => {
-      if (data?.data?.length) {
-        const formatted: PprPoint[] = data.data.map((d: any) => ({
-          orc: parseFloat(d.orc_generated_power || 0),
-          parasitic: parseFloat(d.parasitic_power || 0),
-          net: parseFloat(d.net_power_generated || 0),
-          timestamp: d.timestamp,
-        }));
-        this.chartData.set(formatted.slice(-15));
-        this.historyLoaded = true;
-      }
-    });
-
-    socket.on('pprData', (data: any) => {
-      // 1) hard-skip the very first live message after connect
-      if (this.skipNextLive) {
-        this.skipNextLive = false;
+      /** 1) Fetch Live Historical Data */
+      if (mode !== 'Simulation') {
+        const to = new Date();
+        const from = new Date(to.getTime() - 24 * 60 * 60 * 1000);
+        this.kpi.fetchPprHistory({
+          limit: 500,
+          fromDate: from.toISOString(),
+          toDate: to.toISOString(),
+        });
         return;
       }
-      // 2) ignore lives until history is set
-      if (!this.historyLoaded) return;
 
-      const newPoint: PprPoint = {
-        orc: parseFloat(data?.orc_generated_power || 0),
-        parasitic: parseFloat(data?.parasitic_power || 0),
-        net: parseFloat(data?.net_power_generated || 0),
-        timestamp: data?.timestamp || Date.now(),
-      };
+      /** 3) Simulation Mode — historical + live */
+      this.skipNextLive = true;
+      this.historyLoaded = false;
 
-      this.chartData.update((prev) => {
-        const newTs = new Date(newPoint.timestamp).getTime();
-        const lastTs = prev.length
-          ? new Date(prev[prev.length - 1].timestamp).getTime()
-          : -Infinity;
+      const socket = this.socketSvc.connect();
+      this.socket = socket;
 
-        // ignore duplicates/out-of-order
-        if (newTs <= lastTs) return prev;
-
-        const updated = [...prev, newPoint];
-        return updated.slice(-15);
+      socket.on('connect', () => {
+        // on each (re)connect, ignore the first live tick — but do NOT reset
+        // historyLoaded (a flaky reconnect would otherwise gate out all live
+        // ticks since history isn't re-sent).
+        this.skipNextLive = true;
       });
-    });
 
-    // request initial historical data
-    socket.emit('getSensorHistory', { type: 'pprHistoricalData' });
+      socket.on('pprHistoricalData', (data: any) => {
+        if (data?.data?.length) {
+          const formatted: PprPoint[] = data.data.map((d: any) => ({
+            orc: parseFloat(d.orc_generated_power || 0),
+            parasitic: parseFloat(d.parasitic_power || 0),
+            net: parseFloat(d.net_power_generated || 0),
+            timestamp: d.timestamp,
+          }));
+          this.chartData.set(formatted.slice(-15));
+          this.historyLoaded = true;
+        }
+      });
+
+      socket.on('pprData', (data: any) => {
+        // 1) hard-skip the very first live message after connect
+        if (this.skipNextLive) {
+          this.skipNextLive = false;
+          return;
+        }
+        // 2) ignore lives until history is set
+        if (!this.historyLoaded) return;
+
+        const newPoint: PprPoint = {
+          orc: parseFloat(data?.orc_generated_power || 0),
+          parasitic: parseFloat(data?.parasitic_power || 0),
+          net: parseFloat(data?.net_power_generated || 0),
+          timestamp: data?.timestamp || Date.now(),
+        };
+
+        this.chartData.update((prev) => {
+          const newTs = new Date(newPoint.timestamp).getTime();
+          const lastTs = prev.length
+            ? new Date(prev[prev.length - 1].timestamp).getTime()
+            : -Infinity;
+
+          // ignore duplicates/out-of-order
+          if (newTs <= lastTs) return prev;
+
+          const updated = [...prev, newPoint];
+          return updated.slice(-15);
+        });
+      });
+
+      // request initial historical data
+      socket.emit('getSensorHistory', { type: 'pprHistoricalData' });
+    });
   }
 
   ngOnDestroy(): void {
+    this.teardownSocket();
+  }
+
+  private teardownSocket(): void {
     if (this.socket) {
       this.socket.off('pprData');
       this.socket.off('pprHistoricalData');
       this.socket.disconnect();
+      this.socket = null;
     }
   }
 
