@@ -1,0 +1,453 @@
+Alarm ID,Subsystem,Alarm Description,Priority,Status,TimeCounter
+ALM-0001,Safety,Emergency Stop Pressed,Critical,Active,1
+ALM-0002,TES Tank,TES SoC Low,Warning,Acknowledged,2
+ALM-0003,Sensors,Flowmeter Signal Loss,Warning,Active,3
+ALM-0004,ORC,ORC Heat Exchanger Temperature Low,Warning,Active,4
+ALM-0005,TES Tank,TES Top Temp High,Critical,Acknowledged,5
+ALM-0006,Pumps,Pump Cavitation Detected (NPSH Low),Major,Acknowledged,6
+ALM-0008,Edge Agent,OTA Update Failed,Minor,Active,8
+ALM-0009,Safety,Emergency Stop Pressed,Critical,Cleared,9
+ALM-0010,Controls,PLC Communication Timeout,Critical,Cleared,10
+ALM-0011,Pumps,Pump Cavitation Detected (NPSH Low),Major,Cleared,11
+ALM-0012,ORC,ORC Heat Exchanger Temperature Low,Warning,Acknowledged,12
+ALM-0013,ORC,ORC Overspeed Trip,Critical,Active,13
+ALM-0014,ORC,ORC Overspeed Trip,Critical,Active,14
+ALM-0015,ORC,Working Fluid Low Level,Major,Acknowledged,15
+ALM-0016,Pumps,Pump Motor Overload,Major,Cleared,16
+ALM-0017,ORC,ORC Condensing Pressure High,Critical,Cleared,17
+ALM-0018,Sensors,Flowmeter Signal Loss,Warning,Active,18
+ALM-0020,Pumps,Pump Motor Overload,Major,Acknowledged,20
+ALM-0021,ORC,ORC Overspeed Trip,Critical,Active,21
+ALM-0022,TES Tank,TES Stratification Loss,Warning,Cleared,22
+ALM-0023,Pumps,Pump Motor Overload,Major,Acknowledged,23
+ALM-0024,Sensors,Flowmeter Signal Loss,Warning,Acknowledged,24
+ALM-0025,Solar Loop,HTF Over-Temperature,Major,Acknowledged,25
+ALM-0026,Bypass Cooler,Valve Failed to Open,Major,Cleared,26
+ALM-0027,ORC,ORC Condensing Pressure High,Critical,Acknowledged,27
+ALM-0028,Edge Agent,MQTT Broker Disconnect,Warning,Active,28
+ALM-0029,TES Tank,TES Level Low,Major,Cleared,29
+ALM-0030,TES Tank,TES Top Temp High,Critical,Acknowledged,30
+ALM-0031,ORC,ORC Condensing Pressure High,Critical,Active,31
+ALM-0032,Sensors,Flowmeter Signal Loss,Warning,Acknowledged,32
+ALM-0033,TES Tank,TES Stratification Loss,Warning,Active,33
+ALM-0034,Pumps,Pump Cavitation Detected (NPSH Low),Major,Cleared,34
+ALM-0035,Solar Loop,HTF Over-Temperature,Major,Active,35
+ALM-0036,Controls,PLC Communication Timeout,Critical,Active,36
+ALM-0037,Controls,PLC Communication Timeout,Critical,Acknowledged,37
+ALM-0038,Pumps,Pump Motor Overload,Major,Acknowledged,38
+ALM-0039,Solar Loop,HTF Over-Temperature,Major,Acknowledged,39
+ALM-0040,Safety,Emergency Stop Pressed,Critical,Cleared,40
+ALM-0041,Pumps,Pump Motor Overload,Major,Acknowledged,41
+ALM-0042,ORC,ORC Overspeed Trip,Critical,Acknowledged,42
+ALM-0044,IT Cooling,Rack Inlet Temp High,Critical,Acknowledged,44
+ALM-0045,TES Tank,TES SoC Low,Warning,Cleared,45
+ALM-0046,TES Tank,TES Top Temp High,Critical,Cleared,46
+ALM-0047,Safety,Emergency Stop Pressed,Critical,Active,47
+ALM-0048,TES Tank,TES SoC Low,Warning,Active,48
+ALM-0049,TES Tank,TES Level Low,Major,Acknowledged,49
+ALM-0050,IT Cooling,Rack Inlet Temp High,Critical,Cleared,50
+ALM-0051,Solar Loop,HTF Over-Temperature,Major,Cleared,51
+ALM-0052,Controls,PLC Communication Timeout,Critical,Acknowledged,52
+ALM-0054,TES Tank,TES SoC Low,Warning,Acknowledged,54
+ALM-0055,Edge Agent,OTA Update Failed,Minor,Acknowledged,55
+ALM-0056,ORC,ORC Condensing Pressure High,Critical,Cleared,56
+ALM-0057,Controls,PLC Communication Timeout,Critical,Active,57
+ALM-0058,IT Cooling,Rack Inlet Temp High,Critical,Acknowledged,58
+ALM-0059,Pumps,Pump Cavitation Detected (NPSH Low),Major,Acknowledged,59
+ALM-0060,Safety,Emergency Stop Pressed,Critical,Cleared,60
+ALM-0061,ORC,ORC Overspeed Trip,Critical,Active,61
+ALM-0063,ORC,ORC Condensing Pressure High,Critical,Active,63
+ALM-0064,TES Tank,TES SoC Low,Warning,Acknowledged,64
+ALM-0065,TES Tank,TES Level Low,Major,Acknowledged,65
+ALM-0066,Edge Agent,OTA Update Failed,Minor,Active,66
+ALM-0067,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,67
+ALM-0068,Pumps,Pump Motor Overload,Major,Active,68
+ALM-0069,ORC,ORC Condensing Pressure High,Critical,Active,69
+ALM-0070,Controls,PLC Communication Timeout,Critical,Acknowledged,70
+ALM-0071,TES Tank,TES Level Low,Major,Cleared,71
+ALM-0072,ORC,ORC Overspeed Trip,Critical,Cleared,72
+ALM-0073,ORC,ORC Condensing Pressure High,Critical,Active,73
+ALM-0074,ORC,Working Fluid Low Level,Major,Cleared,74
+ALM-0075,Solar Loop,HTF Over-Temperature,Major,Active,75
+ALM-0077,TES Tank,TES Top Temp High,Critical,Cleared,77
+ALM-0078,Edge Agent,OTA Update Failed,Minor,Acknowledged,78
+ALM-0080,IT Cooling,Rack Inlet Temp High,Critical,Acknowledged,80
+ALM-0081,TES Tank,TES Top Temp High,Critical,Cleared,81
+ALM-0082,TES Tank,TES SoC Low,Warning,Active,82
+ALM-0084,TES Tank,TES Stratification Loss,Warning,Acknowledged,84
+ALM-0085,Solar Loop,HTF Over-Temperature,Major,Acknowledged,85
+ALM-0086,Pumps,Pump Motor Overload,Major,Acknowledged,86
+ALM-0087,Edge Agent,MQTT Broker Disconnect,Warning,Cleared,87
+ALM-0088,ORC,Working Fluid Low Level,Major,Acknowledged,88
+ALM-0089,Pumps,Pump Motor Overload,Major,Active,89
+ALM-0090,Controls,PLC Communication Timeout,Critical,Cleared,90
+ALM-0091,Bypass Cooler,Valve Failed to Open,Major,Cleared,91
+ALM-0092,ORC,ORC Condensing Pressure High,Critical,Active,92
+ALM-0093,Edge Agent,OTA Update Failed,Minor,Acknowledged,93
+ALM-0094,ORC,ORC Condensing Pressure High,Critical,Acknowledged,94
+ALM-0095,IT Cooling,Rack Inlet Temp High,Critical,Acknowledged,95
+ALM-0096,TES Tank,TES Level Low,Major,Cleared,96
+ALM-0097,TES Tank,TES Level Low,Major,Cleared,97
+ALM-0098,ORC,Working Fluid Low Level,Major,Cleared,98
+ALM-0099,Edge Agent,OTA Update Failed,Minor,Cleared,99
+ALM-0100,TES Tank,TES SoC Low,Warning,Active,100
+ALM-0101,Controls,PLC Communication Timeout,Critical,Acknowledged,101
+ALM-0102,Edge Agent,OTA Update Failed,Minor,Cleared,102
+ALM-0103,TES Tank,TES SoC Low,Warning,Acknowledged,103
+ALM-0104,Pumps,Pump Cavitation Detected (NPSH Low),Major,Active,104
+ALM-0106,ORC,ORC Condensing Pressure High,Critical,Cleared,106
+ALM-0107,Pumps,Pump Motor Overload,Major,Acknowledged,107
+ALM-0108,Controls,PLC Communication Timeout,Critical,Active,108
+ALM-0109,TES Tank,TES Top Temp High,Critical,Cleared,109
+ALM-0110,Sensors,Flowmeter Signal Loss,Warning,Acknowledged,110
+ALM-0111,Safety,Emergency Stop Pressed,Critical,Acknowledged,111
+ALM-0112,Pumps,Pump Cavitation Detected (NPSH Low),Major,Cleared,112
+ALM-0113,TES Tank,TES SoC Low,Warning,Cleared,113
+ALM-0114,Safety,Emergency Stop Pressed,Critical,Acknowledged,114
+ALM-0115,Pumps,Pump Cavitation Detected (NPSH Low),Major,Active,115
+ALM-0117,ORC,ORC Heat Exchanger Temperature Low,Warning,Active,117
+ALM-0118,IT Cooling,Rack Inlet Temp High,Critical,Cleared,118
+ALM-0119,ORC,ORC Heat Exchanger Temperature Low,Warning,Acknowledged,119
+ALM-0120,Edge Agent,MQTT Broker Disconnect,Warning,Acknowledged,120
+ALM-0121,TES Tank,TES Stratification Loss,Warning,Cleared,121
+ALM-0122,TES Tank,TES SoC Low,Warning,Cleared,122
+ALM-0123,Edge Agent,MQTT Broker Disconnect,Warning,Active,123
+ALM-0125,Solar Loop,HTF Over-Temperature,Major,Cleared,125
+ALM-0126,IT Cooling,Rack Inlet Temp High,Critical,Active,126
+ALM-0127,Pumps,Pump Cavitation Detected (NPSH Low),Major,Cleared,127
+ALM-0128,ORC,ORC Heat Exchanger Temperature Low,Warning,Cleared,128
+ALM-0129,ORC,ORC Overspeed Trip,Critical,Active,129
+ALM-0130,TES Tank,TES Top Temp High,Critical,Acknowledged,130
+ALM-0131,Safety,Emergency Stop Pressed,Critical,Active,131
+ALM-0132,TES Tank,TES Stratification Loss,Warning,Cleared,132
+ALM-0133,ORC,ORC Overspeed Trip,Critical,Acknowledged,133
+ALM-0134,Bypass Cooler,Valve Failed to Open,Major,Cleared,134
+ALM-0135,Controls,PLC Communication Timeout,Critical,Cleared,135
+ALM-0136,Edge Agent,OTA Update Failed,Minor,Acknowledged,136
+ALM-0139,TES Tank,TES Level Low,Major,Acknowledged,139
+ALM-0140,IT Cooling,Rack Inlet Temp High,Critical,Active,140
+ALM-0141,ORC,Working Fluid Low Level,Major,Acknowledged,141
+ALM-0142,TES Tank,TES Stratification Loss,Warning,Cleared,142
+ALM-0143,Sensors,Flowmeter Signal Loss,Warning,Active,143
+ALM-0144,Edge Agent,OTA Update Failed,Minor,Active,144
+ALM-0145,TES Tank,TES Stratification Loss,Warning,Acknowledged,145
+ALM-0146,TES Tank,TES Top Temp High,Critical,Cleared,146
+ALM-0147,Edge Agent,MQTT Broker Disconnect,Warning,Active,147
+ALM-0148,ORC,ORC Overspeed Trip,Critical,Acknowledged,148
+ALM-0149,ORC,Working Fluid Low Level,Major,Active,149
+ALM-0150,TES Tank,TES Top Temp High,Critical,Cleared,150
+ALM-0151,ORC,ORC Condensing Pressure High,Critical,Cleared,151
+ALM-0152,TES Tank,TES Top Temp High,Critical,Cleared,152
+ALM-0154,Sensors,Flowmeter Signal Loss,Warning,Acknowledged,154
+ALM-0155,ORC,ORC Overspeed Trip,Critical,Active,155
+ALM-0156,ORC,ORC Heat Exchanger Temperature Low,Warning,Cleared,156
+ALM-0157,ORC,ORC Overspeed Trip,Critical,Active,157
+ALM-0158,ORC,Working Fluid Low Level,Major,Cleared,158
+ALM-0159,ORC,Working Fluid Low Level,Major,Cleared,159
+ALM-0160,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,160
+ALM-0161,Bypass Cooler,Valve Failed to Open,Major,Active,161
+ALM-0162,Solar Loop,HTF Over-Temperature,Major,Cleared,162
+ALM-0163,Controls,PLC Communication Timeout,Critical,Cleared,163
+ALM-0164,TES Tank,TES Level Low,Major,Cleared,164
+ALM-0165,TES Tank,TES Level Low,Major,Acknowledged,165
+ALM-0166,Edge Agent,OTA Update Failed,Minor,Acknowledged,166
+ALM-0167,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,167
+ALM-0168,TES Tank,TES Top Temp High,Critical,Active,168
+ALM-0169,Edge Agent,MQTT Broker Disconnect,Warning,Active,169
+ALM-0171,Solar Loop,HTF Over-Temperature,Major,Active,171
+ALM-0172,TES Tank,TES Level Low,Major,Acknowledged,172
+ALM-0173,Safety,Emergency Stop Pressed,Critical,Cleared,173
+ALM-0174,TES Tank,TES Stratification Loss,Warning,Cleared,174
+ALM-0175,Pumps,Pump Motor Overload,Major,Cleared,175
+ALM-0176,Bypass Cooler,Valve Failed to Open,Major,Cleared,176
+ALM-0177,ORC,ORC Overspeed Trip,Critical,Cleared,177
+ALM-0178,ORC,ORC Condensing Pressure High,Critical,Acknowledged,178
+ALM-0179,IT Cooling,Rack Inlet Temp High,Critical,Acknowledged,179
+ALM-0180,Controls,PLC Communication Timeout,Critical,Active,180
+ALM-0181,IT Cooling,Rack Inlet Temp High,Critical,Active,181
+ALM-0182,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,182
+ALM-0183,Sensors,Flowmeter Signal Loss,Warning,Active,183
+ALM-0184,TES Tank,TES Stratification Loss,Warning,Acknowledged,184
+ALM-0186,ORC,ORC Condensing Pressure High,Critical,Cleared,186
+ALM-0187,ORC,ORC Overspeed Trip,Critical,Cleared,187
+ALM-0188,Edge Agent,MQTT Broker Disconnect,Warning,Cleared,188
+ALM-0189,Edge Agent,MQTT Broker Disconnect,Warning,Acknowledged,189
+ALM-0190,Sensors,Flowmeter Signal Loss,Warning,Cleared,190
+ALM-0191,ORC,ORC Heat Exchanger Temperature Low,Warning,Cleared,191
+ALM-0192,Safety,Emergency Stop Pressed,Critical,Cleared,192
+ALM-0193,IT Cooling,Rack Inlet Temp High,Critical,Cleared,193
+ALM-0194,Edge Agent,MQTT Broker Disconnect,Warning,Cleared,194
+ALM-0195,Pumps,Pump Motor Overload,Major,Active,195
+ALM-0196,Solar Loop,HTF Over-Temperature,Major,Active,196
+ALM-0197,Edge Agent,OTA Update Failed,Minor,Active,197
+ALM-0198,TES Tank,TES Stratification Loss,Warning,Acknowledged,198
+ALM-0199,ORC,ORC Overspeed Trip,Critical,Active,199
+ALM-0200,Pumps,Pump Cavitation Detected (NPSH Low),Major,Acknowledged,200
+ALM-0201,ORC,ORC Overspeed Trip,Critical,Acknowledged,201
+ALM-0202,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,202
+ALM-0203,ORC,ORC Heat Exchanger Temperature Low,Warning,Cleared,203
+ALM-0204,TES Tank,TES Stratification Loss,Warning,Cleared,204
+ALM-0205,ORC,ORC Overspeed Trip,Critical,Cleared,205
+ALM-0206,Edge Agent,OTA Update Failed,Minor,Acknowledged,206
+ALM-0208,TES Tank,TES Level Low,Major,Active,208
+ALM-0209,IT Cooling,Rack Inlet Temp High,Critical,Cleared,209
+ALM-0210,Edge Agent,MQTT Broker Disconnect,Warning,Active,210
+ALM-0211,Solar Loop,HTF Over-Temperature,Major,Cleared,211
+ALM-0212,ORC,ORC Heat Exchanger Temperature Low,Warning,Cleared,212
+ALM-0213,TES Tank,TES Stratification Loss,Warning,Cleared,213
+ALM-0214,ORC,ORC Condensing Pressure High,Critical,Cleared,214
+ALM-0215,Edge Agent,MQTT Broker Disconnect,Warning,Acknowledged,215
+ALM-0216,ORC,ORC Heat Exchanger Temperature Low,Warning,Acknowledged,216
+ALM-0217,Sensors,Flowmeter Signal Loss,Warning,Active,217
+ALM-0218,ORC,Working Fluid Low Level,Major,Cleared,218
+ALM-0220,ORC,ORC Condensing Pressure High,Critical,Active,220
+ALM-0221,IT Cooling,Rack Inlet Temp High,Critical,Acknowledged,221
+ALM-0222,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,222
+ALM-0224,Controls,PLC Communication Timeout,Critical,Acknowledged,224
+ALM-0225,Pumps,Pump Cavitation Detected (NPSH Low),Major,Acknowledged,225
+ALM-0226,TES Tank,TES SoC Low,Warning,Active,226
+ALM-0227,TES Tank,TES Stratification Loss,Warning,Cleared,227
+ALM-0228,Solar Loop,HTF Over-Temperature,Major,Cleared,228
+ALM-0229,ORC,Working Fluid Low Level,Major,Cleared,229
+ALM-0230,ORC,ORC Condensing Pressure High,Critical,Active,230
+ALM-0231,Edge Agent,OTA Update Failed,Minor,Cleared,231
+ALM-0233,Edge Agent,MQTT Broker Disconnect,Warning,Acknowledged,233
+ALM-0234,Edge Agent,OTA Update Failed,Minor,Cleared,234
+ALM-0235,TES Tank,TES SoC Low,Warning,Acknowledged,235
+ALM-0236,Edge Agent,MQTT Broker Disconnect,Warning,Cleared,236
+ALM-0237,Safety,Emergency Stop Pressed,Critical,Cleared,237
+ALM-0238,Edge Agent,OTA Update Failed,Minor,Active,238
+ALM-0239,Pumps,Pump Motor Overload,Major,Active,239
+ALM-0240,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,240
+ALM-0242,TES Tank,TES Top Temp High,Critical,Acknowledged,242
+ALM-0243,Sensors,Flowmeter Signal Loss,Warning,Cleared,243
+ALM-0245,Pumps,Pump Motor Overload,Major,Cleared,245
+ALM-0246,ORC,Working Fluid Low Level,Major,Cleared,246
+ALM-0247,IT Cooling,Rack Inlet Temp High,Critical,Acknowledged,247
+ALM-0248,Safety,Emergency Stop Pressed,Critical,Cleared,248
+ALM-0249,Sensors,Flowmeter Signal Loss,Warning,Acknowledged,249
+ALM-0251,TES Tank,TES SoC Low,Warning,Active,251
+ALM-0253,Sensors,Flowmeter Signal Loss,Warning,Cleared,253
+ALM-0254,ORC,ORC Overspeed Trip,Critical,Active,254
+ALM-0255,Safety,Emergency Stop Pressed,Critical,Cleared,255
+ALM-0256,Sensors,Flowmeter Signal Loss,Warning,Acknowledged,256
+ALM-0257,IT Cooling,Rack Inlet Temp High,Critical,Acknowledged,257
+ALM-0258,ORC,ORC Overspeed Trip,Critical,Cleared,258
+ALM-0260,IT Cooling,Rack Inlet Temp High,Critical,Active,260
+ALM-0261,TES Tank,TES Level Low,Major,Cleared,261
+ALM-0263,Pumps,Pump Cavitation Detected (NPSH Low),Major,Acknowledged,263
+ALM-0265,Pumps,Pump Cavitation Detected (NPSH Low),Major,Active,265
+ALM-0266,TES Tank,TES Level Low,Major,Active,266
+ALM-0267,Sensors,Flowmeter Signal Loss,Warning,Active,267
+ALM-0268,ORC,ORC Condensing Pressure High,Critical,Active,268
+ALM-0269,TES Tank,TES Stratification Loss,Warning,Acknowledged,269
+ALM-0270,Controls,PLC Communication Timeout,Critical,Active,270
+ALM-0271,Sensors,Flowmeter Signal Loss,Warning,Acknowledged,271
+ALM-0272,TES Tank,TES Stratification Loss,Warning,Active,272
+ALM-0273,Pumps,Pump Motor Overload,Major,Active,273
+ALM-0274,ORC,Working Fluid Low Level,Major,Acknowledged,274
+ALM-0275,TES Tank,TES Level Low,Major,Cleared,275
+ALM-0276,ORC,ORC Heat Exchanger Temperature Low,Warning,Cleared,276
+ALM-0279,Sensors,Flowmeter Signal Loss,Warning,Cleared,279
+ALM-0280,Sensors,Flowmeter Signal Loss,Warning,Active,280
+ALM-0281,TES Tank,TES SoC Low,Warning,Cleared,281
+ALM-0282,Controls,PLC Communication Timeout,Critical,Acknowledged,282
+ALM-0283,TES Tank,TES Level Low,Major,Cleared,283
+ALM-0284,TES Tank,TES Top Temp High,Critical,Cleared,284
+ALM-0285,ORC,ORC Heat Exchanger Temperature Low,Warning,Cleared,285
+ALM-0286,Solar Loop,HTF Over-Temperature,Major,Acknowledged,286
+ALM-0287,Safety,Emergency Stop Pressed,Critical,Active,287
+ALM-0288,ORC,ORC Condensing Pressure High,Critical,Cleared,288
+ALM-0289,IT Cooling,Rack Inlet Temp High,Critical,Active,289
+ALM-0290,Pumps,Pump Motor Overload,Major,Acknowledged,290
+ALM-0291,Controls,PLC Communication Timeout,Critical,Cleared,291
+ALM-0292,TES Tank,TES SoC Low,Warning,Active,292
+ALM-0293,ORC,ORC Condensing Pressure High,Critical,Cleared,293
+ALM-0294,TES Tank,TES SoC Low,Warning,Acknowledged,294
+ALM-0295,Controls,PLC Communication Timeout,Critical,Acknowledged,295
+ALM-0296,ORC,ORC Condensing Pressure High,Critical,Cleared,296
+ALM-0297,Edge Agent,MQTT Broker Disconnect,Warning,Active,297
+ALM-0298,TES Tank,TES Level Low,Major,Cleared,298
+ALM-0299,ORC,ORC Heat Exchanger Temperature Low,Warning,Active,299
+ALM-0300,ORC,Working Fluid Low Level,Major,Cleared,300
+ALM-0301,ORC,ORC Condensing Pressure High,Critical,Acknowledged,301
+ALM-0303,ORC,ORC Overspeed Trip,Critical,Acknowledged,303
+ALM-0304,IT Cooling,Rack Inlet Temp High,Critical,Cleared,304
+ALM-0305,TES Tank,TES Level Low,Major,Active,305
+ALM-0306,IT Cooling,Rack Inlet Temp High,Critical,Cleared,306
+ALM-0308,ORC,ORC Heat Exchanger Temperature Low,Warning,Cleared,308
+ALM-0309,Edge Agent,OTA Update Failed,Minor,Active,309
+ALM-0310,ORC,Working Fluid Low Level,Major,Active,310
+ALM-0311,IT Cooling,Rack Inlet Temp High,Critical,Cleared,311
+ALM-0312,Safety,Emergency Stop Pressed,Critical,Active,312
+ALM-0313,TES Tank,TES Top Temp High,Critical,Cleared,313
+ALM-0314,Solar Loop,HTF Over-Temperature,Major,Acknowledged,314
+ALM-0315,Controls,PLC Communication Timeout,Critical,Cleared,315
+ALM-0316,TES Tank,TES Level Low,Major,Active,316
+ALM-0317,TES Tank,TES SoC Low,Warning,Cleared,317
+ALM-0319,Bypass Cooler,Valve Failed to Open,Major,Active,319
+ALM-0320,ORC,ORC Condensing Pressure High,Critical,Cleared,320
+ALM-0321,ORC,Working Fluid Low Level,Major,Active,321
+ALM-0322,TES Tank,TES Level Low,Major,Active,322
+ALM-0323,Pumps,Pump Motor Overload,Major,Cleared,323
+ALM-0324,TES Tank,TES SoC Low,Warning,Cleared,324
+ALM-0325,ORC,ORC Overspeed Trip,Critical,Acknowledged,325
+ALM-0327,TES Tank,TES Level Low,Major,Acknowledged,327
+ALM-0328,Controls,PLC Communication Timeout,Critical,Active,328
+ALM-0329,Bypass Cooler,Valve Failed to Open,Major,Active,329
+ALM-0330,Edge Agent,MQTT Broker Disconnect,Warning,Active,330
+ALM-0331,ORC,ORC Heat Exchanger Temperature Low,Warning,Cleared,331
+ALM-0332,Solar Loop,HTF Over-Temperature,Major,Cleared,332
+ALM-0333,Safety,Emergency Stop Pressed,Critical,Cleared,333
+ALM-0334,Controls,PLC Communication Timeout,Critical,Cleared,334
+ALM-0335,ORC,ORC Overspeed Trip,Critical,Acknowledged,335
+ALM-0336,ORC,ORC Overspeed Trip,Critical,Cleared,336
+ALM-0337,Solar Loop,HTF Over-Temperature,Major,Active,337
+ALM-0338,TES Tank,TES SoC Low,Warning,Cleared,338
+ALM-0339,TES Tank,TES Stratification Loss,Warning,Active,339
+ALM-0340,Bypass Cooler,Valve Failed to Open,Major,Cleared,340
+ALM-0342,TES Tank,TES Level Low,Major,Active,342
+ALM-0343,Pumps,Pump Cavitation Detected (NPSH Low),Major,Active,343
+ALM-0344,TES Tank,TES SoC Low,Warning,Active,344
+ALM-0345,Edge Agent,OTA Update Failed,Minor,Active,345
+ALM-0346,IT Cooling,Rack Inlet Temp High,Critical,Cleared,346
+ALM-0347,Edge Agent,OTA Update Failed,Minor,Acknowledged,347
+ALM-0348,TES Tank,TES Top Temp High,Critical,Active,348
+ALM-0349,TES Tank,TES Top Temp High,Critical,Active,349
+ALM-0351,TES Tank,TES Level Low,Major,Cleared,351
+ALM-0352,ORC,ORC Heat Exchanger Temperature Low,Warning,Active,352
+ALM-0353,Sensors,Flowmeter Signal Loss,Warning,Acknowledged,353
+ALM-0354,TES Tank,TES Stratification Loss,Warning,Acknowledged,354
+ALM-0355,Solar Loop,HTF Over-Temperature,Major,Acknowledged,355
+ALM-0357,Safety,Emergency Stop Pressed,Critical,Cleared,357
+ALM-0358,Bypass Cooler,Valve Failed to Open,Major,Active,358
+ALM-0359,Edge Agent,OTA Update Failed,Minor,Acknowledged,359
+ALM-0361,IT Cooling,Rack Inlet Temp High,Critical,Active,361
+ALM-0362,Bypass Cooler,Valve Failed to Open,Major,Cleared,362
+ALM-0363,ORC,ORC Condensing Pressure High,Critical,Active,363
+ALM-0364,ORC,ORC Heat Exchanger Temperature Low,Warning,Cleared,364
+ALM-0365,TES Tank,TES Top Temp High,Critical,Acknowledged,365
+ALM-0366,Sensors,Flowmeter Signal Loss,Warning,Cleared,366
+ALM-0367,TES Tank,TES SoC Low,Warning,Acknowledged,367
+ALM-0368,Safety,Emergency Stop Pressed,Critical,Active,368
+ALM-0370,TES Tank,TES Top Temp High,Critical,Acknowledged,370
+ALM-0371,Safety,Emergency Stop Pressed,Critical,Active,371
+ALM-0372,ORC,Working Fluid Low Level,Major,Active,372
+ALM-0373,ORC,ORC Overspeed Trip,Critical,Cleared,373
+ALM-0374,TES Tank,TES Top Temp High,Critical,Active,374
+ALM-0375,IT Cooling,Rack Inlet Temp High,Critical,Active,375
+ALM-0376,Controls,PLC Communication Timeout,Critical,Active,376
+ALM-0377,ORC,ORC Condensing Pressure High,Critical,Acknowledged,377
+ALM-0378,TES Tank,TES SoC Low,Warning,Acknowledged,378
+ALM-0379,Pumps,Pump Cavitation Detected (NPSH Low),Major,Acknowledged,379
+ALM-0380,Controls,PLC Communication Timeout,Critical,Active,380
+ALM-0381,Pumps,Pump Motor Overload,Major,Cleared,381
+ALM-0382,TES Tank,TES Top Temp High,Critical,Acknowledged,382
+ALM-0383,Pumps,Pump Cavitation Detected (NPSH Low),Major,Acknowledged,383
+ALM-0384,Controls,PLC Communication Timeout,Critical,Active,384
+ALM-0385,TES Tank,TES Stratification Loss,Warning,Acknowledged,385
+ALM-0386,ORC,ORC Heat Exchanger Temperature Low,Warning,Active,386
+ALM-0387,Solar Loop,HTF Over-Temperature,Major,Active,387
+ALM-0390,ORC,ORC Overspeed Trip,Critical,Cleared,390
+ALM-0391,Pumps,Pump Cavitation Detected (NPSH Low),Major,Cleared,391
+ALM-0392,Edge Agent,OTA Update Failed,Minor,Acknowledged,392
+ALM-0394,TES Tank,TES SoC Low,Warning,Acknowledged,394
+ALM-0395,Pumps,Pump Cavitation Detected (NPSH Low),Major,Acknowledged,395
+ALM-0396,Sensors,Flowmeter Signal Loss,Warning,Cleared,396
+ALM-0397,ORC,Working Fluid Low Level,Major,Active,397
+ALM-0398,Controls,PLC Communication Timeout,Critical,Active,398
+ALM-0399,ORC,ORC Heat Exchanger Temperature Low,Warning,Cleared,399
+ALM-0400,TES Tank,TES Stratification Loss,Warning,Acknowledged,400
+ALM-0401,Edge Agent,OTA Update Failed,Minor,Acknowledged,401
+ALM-0402,Bypass Cooler,Valve Failed to Open,Major,Cleared,402
+ALM-0403,ORC,ORC Heat Exchanger Temperature Low,Warning,Active,403
+ALM-0404,Sensors,Flowmeter Signal Loss,Warning,Acknowledged,404
+ALM-0405,TES Tank,TES Stratification Loss,Warning,Cleared,405
+ALM-0406,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,406
+ALM-0407,Sensors,Flowmeter Signal Loss,Warning,Active,407
+ALM-0408,Controls,PLC Communication Timeout,Critical,Acknowledged,408
+ALM-0410,Edge Agent,MQTT Broker Disconnect,Warning,Active,410
+ALM-0411,Controls,PLC Communication Timeout,Critical,Active,411
+ALM-0412,ORC,ORC Heat Exchanger Temperature Low,Warning,Cleared,412
+ALM-0413,Bypass Cooler,Valve Failed to Open,Major,Cleared,413
+ALM-0415,Edge Agent,MQTT Broker Disconnect,Warning,Cleared,415
+ALM-0416,IT Cooling,Rack Inlet Temp High,Critical,Active,416
+ALM-0417,TES Tank,TES Level Low,Major,Acknowledged,417
+ALM-0418,TES Tank,TES Level Low,Major,Cleared,418
+ALM-0419,Solar Loop,HTF Over-Temperature,Major,Active,419
+ALM-0420,ORC,ORC Overspeed Trip,Critical,Acknowledged,420
+ALM-0421,Bypass Cooler,Valve Failed to Open,Major,Cleared,421
+ALM-0422,IT Cooling,Rack Inlet Temp High,Critical,Cleared,422
+ALM-0423,Safety,Emergency Stop Pressed,Critical,Active,423
+ALM-0424,ORC,ORC Overspeed Trip,Critical,Cleared,424
+ALM-0425,TES Tank,TES SoC Low,Warning,Cleared,425
+ALM-0426,ORC,ORC Condensing Pressure High,Critical,Cleared,426
+ALM-0427,Edge Agent,OTA Update Failed,Minor,Cleared,427
+ALM-0428,Pumps,Pump Motor Overload,Major,Cleared,428
+ALM-0429,Bypass Cooler,Valve Failed to Open,Major,Cleared,429
+ALM-0430,TES Tank,TES Level Low,Major,Cleared,430
+ALM-0431,Sensors,Flowmeter Signal Loss,Warning,Active,431
+ALM-0432,Solar Loop,HTF Over-Temperature,Major,Cleared,432
+ALM-0433,TES Tank,TES Level Low,Major,Active,433
+ALM-0434,Sensors,Flowmeter Signal Loss,Warning,Cleared,434
+ALM-0435,TES Tank,TES SoC Low,Warning,Active,435
+ALM-0436,TES Tank,TES Level Low,Major,Cleared,436
+ALM-0437,Pumps,Pump Cavitation Detected (NPSH Low),Major,Acknowledged,437
+ALM-0438,TES Tank,TES Level Low,Major,Acknowledged,438
+ALM-0439,ORC,Working Fluid Low Level,Major,Active,439
+ALM-0440,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,440
+ALM-0442,TES Tank,TES Stratification Loss,Warning,Cleared,442
+ALM-0443,TES Tank,TES Top Temp High,Critical,Acknowledged,443
+ALM-0444,TES Tank,TES Stratification Loss,Warning,Active,444
+ALM-0445,Safety,Emergency Stop Pressed,Critical,Cleared,445
+ALM-0446,Bypass Cooler,Valve Failed to Open,Major,Cleared,446
+ALM-0447,Safety,Emergency Stop Pressed,Critical,Active,447
+ALM-0448,TES Tank,TES Level Low,Major,Cleared,448
+ALM-0449,IT Cooling,Rack Inlet Temp High,Critical,Cleared,449
+ALM-0450,Pumps,Pump Motor Overload,Major,Active,450
+ALM-0451,Edge Agent,MQTT Broker Disconnect,Warning,Acknowledged,451
+ALM-0452,Sensors,Flowmeter Signal Loss,Warning,Cleared,452
+ALM-0453,TES Tank,TES Level Low,Major,Active,453
+ALM-0455,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,455
+ALM-0456,Edge Agent,OTA Update Failed,Minor,Active,456
+ALM-0457,ORC,ORC Overspeed Trip,Critical,Acknowledged,457
+ALM-0458,IT Cooling,Rack Inlet Temp High,Critical,Active,458
+ALM-0459,Controls,PLC Communication Timeout,Critical,Cleared,459
+ALM-0460,Controls,PLC Communication Timeout,Critical,Cleared,460
+ALM-0462,IT Cooling,Rack Inlet Temp High,Critical,Active,462
+ALM-0463,Controls,PLC Communication Timeout,Critical,Active,463
+ALM-0464,Pumps,Pump Motor Overload,Major,Acknowledged,464
+ALM-0465,Pumps,Pump Motor Overload,Major,Cleared,465
+ALM-0466,TES Tank,TES Top Temp High,Critical,Acknowledged,466
+ALM-0467,ORC,ORC Condensing Pressure High,Critical,Active,467
+ALM-0468,IT Cooling,Rack Inlet Temp High,Critical,Acknowledged,468
+ALM-0470,Controls,PLC Communication Timeout,Critical,Acknowledged,470
+ALM-0471,Pumps,Pump Motor Overload,Major,Acknowledged,471
+ALM-0472,Bypass Cooler,Valve Failed to Open,Major,Active,472
+ALM-0473,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,473
+ALM-0474,TES Tank,TES Level Low,Major,Acknowledged,474
+ALM-0475,IT Cooling,Rack Inlet Temp High,Critical,Cleared,475
+ALM-0476,Pumps,Pump Motor Overload,Major,Acknowledged,476
+ALM-0477,TES Tank,TES SoC Low,Warning,Active,477
+ALM-0478,Pumps,Pump Cavitation Detected (NPSH Low),Major,Active,478
+ALM-0479,Sensors,Flowmeter Signal Loss,Warning,Active,479
+ALM-0480,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,480
+ALM-0481,ORC,Working Fluid Low Level,Major,Active,481
+ALM-0482,TES Tank,TES SoC Low,Warning,Active,482
+ALM-0483,Solar Loop,HTF Over-Temperature,Major,Cleared,483
+ALM-0484,Bypass Cooler,Valve Failed to Open,Major,Acknowledged,484
+ALM-0485,Controls,PLC Communication Timeout,Critical,Acknowledged,485
+ALM-0486,TES Tank,TES Stratification Loss,Warning,Active,486
+ALM-0487,TES Tank,TES Stratification Loss,Warning,Active,487
+ALM-0488,ORC,Working Fluid Low Level,Major,Cleared,488
+ALM-0489,TES Tank,TES Level Low,Major,Active,489
+ALM-0490,IT Cooling,Rack Inlet Temp High,Critical,Active,490
+ALM-0491,Sensors,Flowmeter Signal Loss,Warning,Active,491
+ALM-0492,TES Tank,TES SoC Low,Warning,Cleared,492
+ALM-0493,Sensors,Flowmeter Signal Loss,Warning,Cleared,493
+ALM-0494,Controls,PLC Communication Timeout,Critical,Acknowledged,494
+ALM-0496,Bypass Cooler,Valve Failed to Open,Major,Cleared,496
+ALM-0497,Safety,Emergency Stop Pressed,Critical,Active,497
+ALM-0498,ORC,ORC Overspeed Trip,Critical,Cleared,498
+ALM-0499,TES Tank,TES Stratification Loss,Warning,Cleared,499
+ALM-0500,IT Cooling,Rack Inlet Temp High,Critical,Acknowledged,500
